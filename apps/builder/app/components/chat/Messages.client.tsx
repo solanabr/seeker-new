@@ -39,15 +39,16 @@ export const Messages = React.forwardRef<HTMLDivElement, MessagesProps>((props: 
             return (
               <div
                 key={index}
-                className={classNames('flex gap-4 p-6 w-full rounded-[calc(0.75rem-1px)]', {
-                  'bg-bolt-elements-messages-background': isUserMessage || !isStreaming || (isStreaming && !isLast),
-                  'bg-gradient-to-b from-bolt-elements-messages-background from-30% to-transparent':
+                className={classNames('flex w-full gap-4 rounded-[1.5rem] border p-6 backdrop-blur-md', {
+                  'border-[rgba(159,212,239,0.14)] bg-[rgba(9,14,20,0.78)] shadow-[0_0_0_1px_rgba(255,255,255,0.03)]':
+                    isUserMessage || !isStreaming || (isStreaming && !isLast),
+                  'border-[rgba(159,212,239,0.14)] bg-gradient-to-b from-[rgba(9,14,20,0.82)] from-30% to-transparent':
                     isStreaming && isLast,
                   'mt-4': !isFirst,
                 })}
               >
                 {isUserMessage && (
-                  <div className="flex items-center justify-center w-[34px] h-[34px] overflow-hidden bg-white text-gray-600 rounded-full shrink-0 self-start">
+                  <div className="flex h-[34px] w-[34px] shrink-0 self-start items-center justify-center overflow-hidden rounded-full border border-[rgba(159,212,239,0.22)] bg-[rgba(159,212,239,0.12)] text-[rgba(232,240,247,0.96)]">
                     <div className="i-ph:user-fill text-xl"></div>
                   </div>
                 )}
@@ -69,7 +70,7 @@ export const Messages = React.forwardRef<HTMLDivElement, MessagesProps>((props: 
           })
         : null}
       {isStreaming && (
-        <div className="text-center w-full text-bolt-elements-textSecondary i-svg-spinners:3-dots-fade text-4xl mt-4"></div>
+        <div className="mt-4 w-full text-center text-4xl text-[rgba(193,205,217,0.72)] i-svg-spinners:3-dots-fade"></div>
       )}
     </div>
   );

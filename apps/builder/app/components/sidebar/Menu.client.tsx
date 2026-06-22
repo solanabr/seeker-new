@@ -105,26 +105,26 @@ export function Menu() {
       initial="closed"
       animate={open ? 'open' : 'closed'}
       variants={menuVariants}
-      className="flex flex-col side-menu fixed top-0 w-[350px] h-full bg-bolt-elements-background-depth-2 border-r rounded-r-3xl border-bolt-elements-borderColor z-sidebar shadow-xl shadow-bolt-elements-sidebar-dropdownShadow text-sm"
+      className="side-menu fixed top-0 z-sidebar flex h-full w-[350px] flex-col rounded-r-[1.75rem] border-r border-[rgba(255,255,255,0.08)] bg-[rgba(9,11,15,0.96)] text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_0_32px_rgba(159,212,239,0.08)] backdrop-blur-xl"
     >
       <div className="flex items-center h-[var(--header-height)]">{/* Placeholder */}</div>
       <div className="flex-1 flex flex-col h-full w-full overflow-hidden">
         <div className="p-4">
           <a
             href="/"
-            className="flex gap-2 items-center bg-bolt-elements-sidebar-buttonBackgroundDefault text-bolt-elements-sidebar-buttonText hover:bg-bolt-elements-sidebar-buttonBackgroundHover rounded-md p-2 transition-theme"
+            className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(207,244,229,0.92)] px-4 py-2 text-[#12211b] transition-opacity hover:opacity-90"
           >
             <span className="inline-block i-bolt:chat scale-110" />
             Start new chat
           </a>
         </div>
-        <div className="text-bolt-elements-textPrimary font-medium pl-6 pr-5 my-2">Your Chats</div>
+        <div className="my-2 pl-6 pr-5 font-medium text-[rgba(232,240,247,0.96)]">Your Chats</div>
         <div className="flex-1 overflow-scroll pl-4 pr-5 pb-5">
-          {list.length === 0 && <div className="pl-2 text-bolt-elements-textTertiary">No previous conversations</div>}
+          {list.length === 0 && <div className="pl-2 text-[rgba(193,205,217,0.56)]">No previous conversations</div>}
           <DialogRoot open={dialogContent !== null}>
             {binDates(list).map(({ category, items }) => (
               <div key={category} className="mt-4 first:mt-0 space-y-1">
-                <div className="text-bolt-elements-textTertiary sticky top-0 z-1 bg-bolt-elements-background-depth-2 pl-2 pt-2 pb-1">
+                <div className="sticky top-0 z-1 bg-[rgba(9,11,15,0.96)] pl-2 pb-1 pt-2 text-[rgba(193,205,217,0.56)]">
                   {category}
                 </div>
                 {items.map((item) => (
@@ -144,7 +144,7 @@ export function Menu() {
                       <p className="mt-1">Are you sure you want to delete this chat?</p>
                     </div>
                   </DialogDescription>
-                  <div className="px-5 pb-4 bg-bolt-elements-background-depth-2 flex gap-2 justify-end">
+                  <div className="flex justify-end gap-2 bg-transparent px-5 pb-4">
                     <DialogButton type="secondary" onClick={closeDialog}>
                       Cancel
                     </DialogButton>
@@ -163,7 +163,7 @@ export function Menu() {
             </Dialog>
           </DialogRoot>
         </div>
-        <div className="flex items-center border-t border-bolt-elements-borderColor p-4">
+        <div className="flex items-center border-t border-[rgba(255,255,255,0.08)] p-4">
           <ThemeSwitch className="ml-auto" />
         </div>
       </div>

@@ -14,6 +14,7 @@
 import { useEffect, useState } from 'react';
 import { DialogRoot } from '~/components/ui/Dialog';
 import { ProviderModal } from './ProviderModal';
+import { classNames } from '~/utils/classNames';
 import {
   PROVIDER_CHANGED_EVENT,
   providerLabel,
@@ -23,6 +24,14 @@ import {
 } from '~/lib/provider-preference';
 
 export function ProviderControl() {
+  return <ProviderControlButton />;
+}
+
+interface ProviderControlButtonProps {
+  className?: string;
+}
+
+export function ProviderControlButton({ className }: ProviderControlButtonProps) {
   const [pref, setPref] = useState<ProviderPreference | null>(null);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
@@ -57,7 +66,10 @@ export function ProviderControl() {
   return (
     <DialogRoot open={open} onOpenChange={setOpen}>
       <button
-        className="flex items-center gap-1.5 text-xs text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary border border-bolt-elements-borderColor rounded-md px-2 py-1 transition-colors"
+        className={classNames(
+          'flex items-center gap-1.5 rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(12,16,22,0.42)] px-3 py-1.5 text-xs text-[rgba(232,240,247,0.96)] transition-colors hover:bg-[rgba(255,255,255,0.05)]',
+          className,
+        )}
         onClick={() => setOpen(true)}
         title="Choose how generation runs"
       >
@@ -66,12 +78,7 @@ export function ProviderControl() {
       </button>
 
       {open && (
-        <ProviderModal
-          initial={pref}
-          dismissible={Boolean(pref)}
-          onSave={handleSave}
-          onClose={() => setOpen(false)}
-        />
+        <ProviderModal initial={pref} dismissible={Boolean(pref)} onSave={handleSave} onClose={() => setOpen(false)} />
       )}
     </DialogRoot>
   );

@@ -14,11 +14,7 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import { Dialog, DialogTitle } from '~/components/ui/Dialog';
 import { classNames } from '~/utils/classNames';
-import {
-  type ProviderAgentId,
-  type ProviderMode,
-  type ProviderPreference,
-} from '~/lib/provider-preference';
+import { type ProviderAgentId, type ProviderMode, type ProviderPreference } from '~/lib/provider-preference';
 
 interface AgentProbe {
   id: ProviderAgentId;
@@ -119,10 +115,7 @@ export const ProviderModal = memo(({ initial, onSave, onClose, dismissible }: Pr
         }
       }
 
-      const pref: ProviderPreference =
-        mode === 'agent-runtime'
-          ? { mode, agentId }
-          : { mode };
+      const pref: ProviderPreference = mode === 'agent-runtime' ? { mode, agentId } : { mode };
 
       onSave(pref);
     } catch (err) {
@@ -141,9 +134,9 @@ export const ProviderModal = memo(({ initial, onSave, onClose, dismissible }: Pr
       <DialogTitle>How should seeker.new build your app?</DialogTitle>
 
       <div className="px-5 py-4 flex flex-col gap-4 max-h-[70vh] overflow-y-auto">
-        <p className="text-sm text-bolt-elements-textSecondary">
-          Generation can run on a coding agent already installed on your machine, on your own API key, or on the
-          hosted key. You can change this anytime.
+        <p className="text-sm text-[rgba(193,205,217,0.82)]">
+          Generation can run on a coding agent already installed on your machine, on your own API key, or on the hosted
+          key. You can change this anytime.
         </p>
 
         {/* agent-runtime */}
@@ -195,7 +188,7 @@ export const ProviderModal = memo(({ initial, onSave, onClose, dismissible }: Pr
               placeholder={hasStoredKey ? 'Saved — paste a new key to replace it' : 'sk-ant-…'}
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
-              className="mt-1 w-full rounded-md bg-bolt-elements-background-depth-1 border border-bolt-elements-borderColor px-3 py-2 text-sm text-bolt-elements-textPrimary focus:outline-none focus:border-bolt-elements-borderColorActive"
+              className="mt-1 w-full rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(8,11,16,0.9)] px-3 py-2 text-sm text-[rgba(232,240,247,0.96)] placeholder:text-[rgba(193,205,217,0.45)] focus:border-[rgba(159,212,239,0.5)] focus:outline-none"
             />
           )}
         </ProviderOption>
@@ -208,13 +201,13 @@ export const ProviderModal = memo(({ initial, onSave, onClose, dismissible }: Pr
           onSelect={() => setMode('cloud')}
         />
 
-        {error && <div className="text-sm text-bolt-elements-button-danger-text">{error}</div>}
+        {error && <div className="text-sm text-[rgba(255,140,136,0.96)]">{error}</div>}
       </div>
 
-      <div className="px-5 py-4 border-t border-bolt-elements-borderColor flex items-center justify-end gap-2">
+      <div className="px-5 py-4 border-t border-[rgba(255,255,255,0.1)] flex items-center justify-end gap-2">
         {dismissible && (
           <button
-            className="inline-flex h-[35px] items-center justify-center rounded-lg px-4 text-sm bg-bolt-elements-button-secondary-background text-bolt-elements-button-secondary-text hover:bg-bolt-elements-button-secondary-backgroundHover"
+            className="inline-flex h-[35px] items-center justify-center rounded-full border border-[rgba(255,255,255,0.1)] bg-transparent px-4 text-sm text-[rgba(232,240,247,0.96)] hover:bg-[rgba(255,255,255,0.05)]"
             onClick={onClose}
           >
             Cancel
@@ -222,7 +215,7 @@ export const ProviderModal = memo(({ initial, onSave, onClose, dismissible }: Pr
         )}
         <button
           className={classNames(
-            'inline-flex h-[35px] items-center justify-center rounded-lg px-4 text-sm bg-bolt-elements-button-primary-background text-bolt-elements-button-primary-text hover:bg-bolt-elements-button-primary-backgroundHover',
+            'inline-flex h-[35px] items-center justify-center rounded-full bg-[rgba(207,244,229,0.92)] px-4 text-sm font-medium text-[#12211b] hover:opacity-90',
             { 'opacity-50 cursor-not-allowed': !canSave || saving },
           )}
           disabled={!canSave || saving}
@@ -246,22 +239,23 @@ interface ProviderOptionProps {
 function ProviderOption({ active, title, subtitle, onSelect, children }: ProviderOptionProps) {
   return (
     <div
-      className={classNames('rounded-lg border p-3 cursor-pointer transition-colors', {
-        'border-bolt-elements-borderColorActive bg-bolt-elements-background-depth-1': active,
-        'border-bolt-elements-borderColor hover:border-bolt-elements-borderColorActive': !active,
+      className={classNames('cursor-pointer rounded-2xl border p-3 transition-colors', {
+        'border-[rgba(159,212,239,0.45)] bg-[rgba(8,11,16,0.85)] shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_0_22px_rgba(159,212,239,0.08)]':
+          active,
+        'border-[rgba(255,255,255,0.1)] bg-[rgba(15,18,24,0.42)] hover:border-[rgba(159,212,239,0.45)]': !active,
       })}
       onClick={onSelect}
     >
       <div className="flex items-start gap-2">
         <div
-          className={classNames('mt-0.5 w-4 h-4 rounded-full border flex-shrink-0', {
-            'border-bolt-elements-item-contentAccent bg-bolt-elements-item-contentAccent': active,
-            'border-bolt-elements-borderColor': !active,
+          className={classNames('mt-0.5 h-4 w-4 flex-shrink-0 rounded-full border', {
+            'border-[rgba(159,212,239,0.9)] bg-[rgba(159,212,239,0.9)]': active,
+            'border-[rgba(255,255,255,0.16)]': !active,
           })}
         />
         <div className="flex-1">
-          <div className="text-sm font-medium text-bolt-elements-textPrimary">{title}</div>
-          <div className="text-xs text-bolt-elements-textTertiary">{subtitle}</div>
+          <div className="text-sm font-medium text-[rgba(232,240,247,0.96)]">{title}</div>
+          <div className="text-xs text-[rgba(193,205,217,0.7)]">{subtitle}</div>
         </div>
       </div>
       {children && <div className="pl-6">{children}</div>}
@@ -283,21 +277,21 @@ function AgentCard({ agent, tagline, selected, onSelect }: AgentCardProps) {
       type="button"
       onClick={onSelect}
       disabled={disabled}
-      className={classNames('relative rounded-lg border p-3 text-left transition-colors', {
-        'border-bolt-elements-borderColorActive bg-bolt-elements-background-depth-2': selected,
-        'border-bolt-elements-borderColor': !selected,
+      className={classNames('relative rounded-2xl border p-3 text-left transition-colors', {
+        'border-[rgba(159,212,239,0.45)] bg-[rgba(8,11,16,0.9)]': selected,
+        'border-[rgba(255,255,255,0.1)] bg-[rgba(15,18,24,0.42)]': !selected,
         'opacity-55 cursor-not-allowed': disabled,
-        'hover:border-bolt-elements-borderColorActive': !disabled && !selected,
+        'hover:border-[rgba(159,212,239,0.45)]': !disabled && !selected,
       })}
     >
       {agent.recommended && agent.detected && (
-        <span className="absolute top-2 right-2 text-[9px] uppercase tracking-wide text-bolt-elements-item-contentAccent">
+        <span className="absolute top-2 right-2 text-[9px] uppercase tracking-wide text-[rgba(159,212,239,0.9)]">
           Recommended
         </span>
       )}
-      <div className="text-sm font-medium text-bolt-elements-textPrimary">{agent.label}</div>
-      <div className="text-xs text-bolt-elements-textTertiary mt-0.5">{tagline}</div>
-      <div className="text-[10px] text-bolt-elements-textTertiary mt-1 font-mono">
+      <div className="text-sm font-medium text-[rgba(232,240,247,0.96)]">{agent.label}</div>
+      <div className="mt-0.5 text-xs text-[rgba(193,205,217,0.7)]">{tagline}</div>
+      <div className="mt-1 font-mono text-[10px] text-[rgba(193,205,217,0.6)]">
         {agent.detected ? (agent.version ? `detected · v${agent.version}` : 'detected') : 'not detected on PATH'}
       </div>
     </button>

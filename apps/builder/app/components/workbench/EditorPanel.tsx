@@ -127,7 +127,7 @@ export const EditorPanel = memo(
         <Panel defaultSize={showTerminal ? DEFAULT_EDITOR_SIZE : 100} minSize={20}>
           <PanelGroup direction="horizontal">
             <Panel defaultSize={20} minSize={10} collapsible>
-              <div className="flex min-h-0 flex-col border-r border-bolt-elements-borderColor h-full">
+              <div className="flex h-full min-h-0 flex-col border-r border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.74)]">
                 <PanelHeader>
                   <div className="i-ph:tree-structure-duotone shrink-0" />
                   Files
@@ -166,7 +166,7 @@ export const EditorPanel = memo(
                   </div>
                 )}
               </PanelHeader>
-              <div className="h-full flex-1 overflow-hidden">
+              <div className="h-full flex-1 overflow-hidden bg-[rgba(10,13,19,0.9)]">
                 <CodeMirrorEditor
                   theme={theme}
                   editable={!isStreaming && editorDocument !== undefined}
@@ -199,8 +199,8 @@ export const EditorPanel = memo(
           }}
         >
           <div className="h-full">
-            <div className="bg-bolt-elements-terminals-background h-full flex flex-col">
-              <div className="flex items-center bg-bolt-elements-background-depth-2 border-y border-bolt-elements-borderColor gap-1.5 min-h-[34px] p-2">
+            <div className="flex h-full flex-col bg-[rgba(8,11,16,0.92)]">
+              <div className="flex min-h-[40px] items-center gap-1.5 border-y border-[rgba(255,255,255,0.08)] bg-[rgba(12,16,22,0.86)] p-2">
                 {Array.from({ length: terminalCount }, (_, index) => {
                   const isActive = activeTerminal === index;
 
@@ -208,10 +208,10 @@ export const EditorPanel = memo(
                     <button
                       key={index}
                       className={classNames(
-                        'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
+                        'flex h-full cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-sm',
                         {
-                          'bg-bolt-elements-terminals-buttonBackground text-bolt-elements-textPrimary': isActive,
-                          'bg-bolt-elements-background-depth-2 text-bolt-elements-textSecondary hover:bg-bolt-elements-terminals-buttonBackground':
+                          'bg-[rgba(159,212,239,0.14)] text-[rgba(232,240,247,0.96)]': isActive,
+                          'bg-transparent text-[rgba(193,205,217,0.72)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[rgba(232,240,247,0.96)]':
                             !isActive,
                         },
                       )}
@@ -222,9 +222,16 @@ export const EditorPanel = memo(
                     </button>
                   );
                 })}
-                {terminalCount < MAX_TERMINALS && <IconButton icon="i-ph:plus" size="md" onClick={addTerminal} />}
+                {terminalCount < MAX_TERMINALS && (
+                  <IconButton
+                    icon="i-ph:plus"
+                    size="md"
+                    className="rounded-full text-[rgba(193,205,217,0.72)] enabled:hover:bg-[rgba(255,255,255,0.05)] enabled:hover:text-[rgba(232,240,247,0.96)]"
+                    onClick={addTerminal}
+                  />
+                )}
                 <IconButton
-                  className="ml-auto"
+                  className="ml-auto rounded-full text-[rgba(193,205,217,0.72)] enabled:hover:bg-[rgba(255,255,255,0.05)] enabled:hover:text-[rgba(232,240,247,0.96)]"
                   icon="i-ph:caret-down"
                   title="Close"
                   size="md"

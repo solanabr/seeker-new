@@ -123,13 +123,39 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-  --cm-backgroundColor: var(--bolt-elements-bg-depth-2);
-  --bolt-elements-editor-gutter-textColor: var(--bolt-elements-textTertiary);
-  --bolt-elements-editor-gutter-activeLineTextColor: var(--bolt-elements-textSecondary);
-  --bolt-elements-editor-selection-inactiveBackgroundOpacity: 0.3;
-  --bolt-elements-editor-activeLineBackgroundColor: rgb(50 53 63 / 50%);
-  --bolt-elements-editor-foldGutter-textColorHover: var(--bolt-elements-textPrimary);
-  --bolt-elements-editor-matchingBracketBackgroundColor: rgba(66, 180, 255, 0.3);
-  --bolt-elements-editor-search-button-backgroundColor: theme('colors.gray.800');
-  --bolt-elements-editor-search-button-backgroundColorHover: theme('colors.alpha.white.10');
+  --cm-backgroundColor: rgba(10, 13, 19, 0.96);
+  --bolt-elements-editor-textColor: rgba(232, 240, 247, 0.94);
+  --bolt-elements-editor-gutter-backgroundColor: rgba(8, 11, 16, 0.94);
+  --bolt-elements-editor-gutter-textColor: rgba(193, 205, 217, 0.5);
+  --bolt-elements-editor-gutter-activeLineTextColor: rgba(232, 240, 247, 0.84);
+  --bolt-elements-editor-selection-inactiveBackgroundOpacity: 0.22;
+  --bolt-elements-editor-activeLineBackgroundColor: rgba(159, 212, 239, 0.08);
+  --bolt-elements-editor-foldGutter-textColorHover: rgba(232, 240, 247, 0.94);
+  --bolt-elements-editor-matchingBracketBackgroundColor: rgba(159, 212, 239, 0.14);
+  --bolt-elements-editor-cursorColor: rgba(207, 244, 229, 0.92);
+  --bolt-elements-editor-selection-backgroundColor: rgba(159, 212, 239, 0.55);
+  --bolt-elements-editor-selection-inactiveBackgroundColor: rgba(159, 212, 239, 0.3);
+  --bolt-elements-editor-panels-borderColor: rgba(255, 255, 255, 0.08);
+  --bolt-elements-editor-search-backgroundColor: rgba(12, 16, 22, 0.92);
+  --bolt-elements-editor-search-textColor: rgba(193, 205, 217, 0.82);
+  --bolt-elements-editor-search-closeButton-backgroundColorHover: rgba(255, 255, 255, 0.05);
+  --bolt-elements-editor-search-closeButton-textColor: rgba(193, 205, 217, 0.72);
+  --bolt-elements-editor-search-closeButton-textColorHover: rgba(232, 240, 247, 0.96);
+  --bolt-elements-editor-search-button-backgroundColor: rgba(255, 255, 255, 0.04);
+  --bolt-elements-editor-search-button-backgroundColorHover: rgba(255, 255, 255, 0.08);
+  --bolt-elements-editor-search-button-textColor: rgba(193, 205, 217, 0.82);
+  --bolt-elements-editor-search-button-textColorHover: rgba(232, 240, 247, 0.96);
+  --bolt-elements-editor-search-button-borderColor: rgba(255, 255, 255, 0.08);
+  --bolt-elements-editor-search-button-borderColorHover: rgba(255, 255, 255, 0.12);
+  --bolt-elements-editor-search-button-borderColorFocused: rgba(159, 212, 239, 0.45);
+  --bolt-elements-editor-search-input-backgroundColor: rgba(8, 11, 16, 0.9);
+  --bolt-elements-editor-search-input-textColor: rgba(232, 240, 247, 0.96);
+  --bolt-elements-editor-search-input-borderColor: rgba(255, 255, 255, 0.1);
+  --bolt-elements-editor-search-input-borderColorFocused: rgba(159, 212, 239, 0.45);
+  --bolt-elements-editor-tooltip-backgroundColor: rgba(12, 16, 22, 0.96);
+  --bolt-elements-editor-tooltip-textColor: rgba(232, 240, 247, 0.96);
+  --bolt-elements-editor-tooltip-backgroundColorSelected: rgba(159, 212, 239, 0.14);
+  --bolt-elements-editor-tooltip-textColorSelected: rgba(232, 240, 247, 0.96);
+  --bolt-elements-editor-tooltip-borderColor: rgba(255, 255, 255, 0.1);
+  --bolt-elements-editor-searchMatch-backgroundColor: rgba(207, 244, 229, 0.2);
 }

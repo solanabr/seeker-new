@@ -50,13 +50,12 @@ export const DialogButton = memo(({ type, children, onClick }: DialogButtonProps
   return (
     <button
       className={classNames(
-        'inline-flex h-[35px] items-center justify-center rounded-lg px-4 text-sm leading-none focus:outline-none',
+        'inline-flex h-[35px] items-center justify-center rounded-full px-4 text-sm leading-none focus:outline-none transition-colors',
         {
-          'bg-bolt-elements-button-primary-background text-bolt-elements-button-primary-text hover:bg-bolt-elements-button-primary-backgroundHover':
-            type === 'primary',
-          'bg-bolt-elements-button-secondary-background text-bolt-elements-button-secondary-text hover:bg-bolt-elements-button-secondary-backgroundHover':
+          'bg-[rgba(207,244,229,0.92)] text-[#12211b] hover:opacity-90': type === 'primary',
+          'border border-[rgba(255,255,255,0.1)] bg-transparent text-[rgba(232,240,247,0.96)] hover:bg-[rgba(255,255,255,0.05)]':
             type === 'secondary',
-          'bg-bolt-elements-button-danger-background text-bolt-elements-button-danger-text hover:bg-bolt-elements-button-danger-backgroundHover':
+          'border border-[rgba(255,92,87,0.35)] bg-[rgba(255,92,87,0.1)] text-[rgba(255,140,136,0.96)] hover:bg-[rgba(255,92,87,0.16)]':
             type === 'danger',
         },
       )}
@@ -71,7 +70,7 @@ export const DialogTitle = memo(({ className, children, ...props }: RadixDialog.
   return (
     <RadixDialog.Title
       className={classNames(
-        'px-5 py-4 flex items-center justify-between border-b border-bolt-elements-borderColor text-lg font-semibold leading-6 text-bolt-elements-textPrimary',
+        'px-5 py-4 flex items-center justify-between border-b border-[rgba(255,255,255,0.1)] text-lg font-semibold leading-6 text-[rgba(232,240,247,0.96)]',
         className,
       )}
       {...props}
@@ -84,7 +83,7 @@ export const DialogTitle = memo(({ className, children, ...props }: RadixDialog.
 export const DialogDescription = memo(({ className, children, ...props }: RadixDialog.DialogDescriptionProps) => {
   return (
     <RadixDialog.Description
-      className={classNames('px-5 py-4 text-bolt-elements-textPrimary text-md', className)}
+      className={classNames('px-5 py-4 text-[rgba(193,205,217,0.82)] text-md', className)}
       {...props}
     >
       {children}
@@ -104,7 +103,7 @@ export const Dialog = memo(({ className, children, onBackdrop, onClose }: Dialog
     <RadixDialog.Portal>
       <RadixDialog.Overlay onClick={onBackdrop} asChild>
         <motion.div
-          className="bg-black/50 fixed inset-0 z-max"
+          className="fixed inset-0 z-max bg-[rgba(2,4,7,0.72)] backdrop-blur-sm"
           initial="closed"
           animate="open"
           exit="closed"
@@ -114,7 +113,7 @@ export const Dialog = memo(({ className, children, onBackdrop, onClose }: Dialog
       <RadixDialog.Content asChild>
         <motion.div
           className={classNames(
-            'fixed top-[50%] left-[50%] z-max max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] border border-bolt-elements-borderColor rounded-lg bg-bolt-elements-background-depth-2 shadow-lg focus:outline-none overflow-hidden',
+            'fixed top-[50%] left-[50%] z-max max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] overflow-hidden rounded-[1.5rem] border border-[rgba(255,255,255,0.12)] bg-[rgba(15,18,24,0.92)] shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_32px_rgba(159,212,239,0.18)] backdrop-blur-xl focus:outline-none',
             className,
           )}
           initial="closed"
@@ -124,7 +123,10 @@ export const Dialog = memo(({ className, children, onBackdrop, onClose }: Dialog
         >
           {children}
           <RadixDialog.Close asChild onClick={onClose}>
-            <IconButton icon="i-ph:x" className="absolute top-[10px] right-[10px]" />
+            <IconButton
+              icon="i-ph:x"
+              className="absolute top-[10px] right-[10px] rounded-full text-[rgba(193,205,217,0.75)] enabled:hover:bg-[rgba(255,255,255,0.06)] enabled:hover:text-[rgba(232,240,247,0.96)]"
+            />
           </RadixDialog.Close>
         </motion.div>
       </RadixDialog.Content>

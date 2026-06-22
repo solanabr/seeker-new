@@ -15,6 +15,7 @@ import { fileModificationsToHTML } from '~/utils/diff';
 import { cubicEasingFn } from '~/utils/easings';
 import { createScopedLogger, renderLogger } from '~/utils/logger';
 import { BaseChat } from './BaseChat';
+import { LoadingScreen } from '~/components/ui/loading-screen';
 
 const toastAnimation = cssTransition({
   enter: 'animated fadeInRight',
@@ -30,6 +31,7 @@ export function Chat() {
 
   return (
     <>
+      {!ready && <LoadingScreen message="Loading your chats" />}
       {ready && <ChatImpl initialMessages={initialMessages} storeMessageHistory={storeMessageHistory} />}
       <ToastContainer
         closeButton={({ closeToast }) => {

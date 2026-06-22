@@ -163,9 +163,9 @@ function Folder({ folder: { depth, name }, collapsed, selected = false, onClick 
   return (
     <NodeButton
       className={classNames('group', {
-        'bg-transparent text-bolt-elements-item-contentDefault hover:text-bolt-elements-item-contentActive hover:bg-bolt-elements-item-backgroundActive':
+        'bg-transparent text-[rgba(193,205,217,0.72)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[rgba(232,240,247,0.96)]':
           !selected,
-        'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent': selected,
+        'bg-[rgba(159,212,239,0.14)] text-[rgba(159,212,239,0.96)]': selected,
       })}
       depth={depth}
       iconClasses={classNames({
@@ -190,22 +190,22 @@ function File({ file: { depth, name }, onClick, selected, unsavedChanges = false
   return (
     <NodeButton
       className={classNames('group', {
-        'bg-transparent hover:bg-bolt-elements-item-backgroundActive text-bolt-elements-item-contentDefault': !selected,
-        'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent': selected,
+        'bg-transparent text-[rgba(193,205,217,0.72)] hover:bg-[rgba(255,255,255,0.05)]': !selected,
+        'bg-[rgba(159,212,239,0.14)] text-[rgba(159,212,239,0.96)]': selected,
       })}
       depth={depth}
       iconClasses={classNames('i-ph:file-duotone scale-98', {
-        'group-hover:text-bolt-elements-item-contentActive': !selected,
+        'group-hover:text-[rgba(232,240,247,0.96)]': !selected,
       })}
       onClick={onClick}
     >
       <div
         className={classNames('flex items-center', {
-          'group-hover:text-bolt-elements-item-contentActive': !selected,
+          'group-hover:text-[rgba(232,240,247,0.96)]': !selected,
         })}
       >
         <div className="flex-1 truncate pr-2">{name}</div>
-        {unsavedChanges && <span className="i-ph:circle-fill scale-68 shrink-0 text-orange-500" />}
+        {unsavedChanges && <span className="i-ph:circle-fill scale-68 shrink-0 text-[rgba(207,244,229,0.92)]" />}
       </div>
     </NodeButton>
   );
@@ -223,7 +223,7 @@ function NodeButton({ depth, iconClasses, onClick, className, children }: Button
   return (
     <button
       className={classNames(
-        'flex items-center gap-1.5 w-full pr-2 border-2 border-transparent text-faded py-0.5',
+        'flex w-full items-center gap-1.5 rounded-lg border border-transparent py-1 pr-2 text-faded',
         className,
       )}
       style={{ paddingLeft: `${6 + depth * NODE_PADDING_LEFT}px` }}
