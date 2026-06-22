@@ -116,7 +116,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <div className={styles.IntroNavActions}>
                     <ClientOnly>{() => <ProviderControlButton className={styles.IntroProviderButton} />}</ClientOnly>
                     <a
-                      href="https://github.com/solana-mobile"
+                      href="https://github.com/solanabr/seeker-new"
                       target="_blank"
                       rel="noreferrer"
                       className={styles.IntroGithubButton}
@@ -332,7 +332,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           lock-in, no platform fees, no gatekeepers.
                         </p>
                         <a
-                          href="https://github.com/solana-mobile"
+                          href="https://github.com/solanabr/seeker-new"
                           target="_blank"
                           rel="noreferrer"
                           className={styles.BentoOutlineButton}
