@@ -1,0 +1,29 @@
+{
+  "name": "@seeker/rails",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Headless rails for shipping a Solana program on-chain: cluster targets, a safe throwaway deployer keypair, a devnet faucet, and a devnet deploy.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "rails": "./src/cli.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "test:artifact-parser": "tsx src/deploy/deploy.test.ts",
+    "deploy": "tsx src/cli.ts deploy",
+    "ship": "tsx src/cli.ts ship",
+    "fund": "tsx src/cli.ts fund",
+    "address": "tsx src/cli.ts address"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

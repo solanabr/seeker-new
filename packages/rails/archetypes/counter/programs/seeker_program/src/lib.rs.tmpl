@@ -1,0 +1,80 @@
+use anchor_lang::prelude::*;
+
+// Placeholder program id. `anchor keys sync` rewrites this (and Anchor.toml) to
+// the freshly generated program keypair at deploy time.
+declare_id!("11111111111111111111111111111111");
+
+// Counter / PDA-store archetype.
+//
+// Fixed structure: a per-authority PDA account holding a single u64 value, with
+// an initialize instruction (creates the PDA) and an increment instruction
+// (bumps the value, overflow-checked, authority-gated). Only the identifier
+// slots below are filled from the plan's programSpec — the shape never changes,
+// which is what keeps generated programs compiling and correct.
+#[program]
+pub mod seeker_program {
+    use super::*;
+
+    pub fn {{INIT_IX}}(ctx: Context<Init>) -> Result<()> {
+        let account = &mut ctx.accounts.state;
+        account.authority = ctx.accounts.authority.key();
+        account.{{STATE_FIELD}} = 0;
+        account.bump = ctx.bumps.state;
+        Ok(())
+    }
+
+    pub fn {{INCREMENT_IX}}(ctx: Context<Update>) -> Result<()> {
+        let account = &mut ctx.accounts.state;
+        account.{{STATE_FIELD}} = account
+            .{{STATE_FIELD}}
+            .checked_add(1)
+            .ok_or({{ERROR_ENUM}}::Overflow)?;
+        Ok(())
+    }
+}
+
+#[derive(Accounts)]
+pub struct Init<'info> {
+    #[account(
+        init,
+        payer = authority,
+        space = 8 + {{STATE_STRUCT}}::INIT_SPACE,
+        seeds = [b"{{SEED_LABEL}}", authority.key().as_ref()],
+        bump
+    )]
+    pub state: Account<'info, {{STATE_STRUCT}}>,
+
+    #[account(mut)]
+    pub authority: Signer<'info>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct Update<'info> {
+    #[account(
+        mut,
+        seeds = [b"{{SEED_LABEL}}", authority.key().as_ref()],
+        bump = state.bump,
+        has_one = authority @ {{ERROR_ENUM}}::Unauthorized
+    )]
+    pub state: Account<'info, {{STATE_STRUCT}}>,
+
+    pub authority: Signer<'info>,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct {{STATE_STRUCT}} {
+    pub authority: Pubkey,
+    pub {{STATE_FIELD}}: u64,
+    pub bump: u8,
+}
+
+#[error_code]
+pub enum {{ERROR_ENUM}} {
+    #[msg("Increment overflowed.")]
+    Overflow,
+    #[msg("Only the authority may perform this action.")]
+    Unauthorized,
+}

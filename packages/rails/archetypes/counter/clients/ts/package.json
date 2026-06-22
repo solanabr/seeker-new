@@ -1,0 +1,14 @@
+{
+  "name": "program-client",
+  "version": "1.0.0",
+  "description": "Generated @solana/kit client for the deployed program.",
+  "main": "src/index.ts",
+  "files": [
+    "./dist/src",
+    "./dist/types",
+    "./src/"
+  ],
+  "peerDependencies": {
+    "@solana/kit": "^6.1.0"
+  }
+}

@@ -1,0 +1,21 @@
+[package]
+name = "seeker-program"
+version = "0.1.0"
+description = "Anchor program emitted next to a generated kit-expo-minimal app."
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "seeker_program"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]
+
+[dependencies]
+anchor-lang = "1.0.0"

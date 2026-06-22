@@ -1,0 +1,65 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+coverage/
+.cache/
+.turbo/
+.next/
+out/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env*.example
+*.local
+*.vars
+
+# Editors and OS files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript
+*.tsbuildinfo
+
+# Expo / React Native
+.expo/
+.expo-shared/
+.kotlin/
+web-build/
+expo-env.d.ts
+ios/
+android/
+
+# Rust / Anchor / Solana
+target/
+.anchor/
+
+# Tooling outputs
+.wrangler/
+_worker.bundle/
+
+# Generated app artifacts
+generated/*
+!generated/.gitkeep

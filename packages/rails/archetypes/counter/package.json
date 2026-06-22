@@ -1,0 +1,17 @@
+{
+  "name": "seeker-program-workspace",
+  "private": true,
+  "type": "module",
+  "description": "Generated Anchor program workspace (counter / PDA-store archetype).",
+  "scripts": {
+    "generate:client": "codama run js"
+  },
+  "devDependencies": {
+    "@codama/nodes-from-anchor": "^1.5.1",
+    "@codama/renderers-js": "^2.3.0",
+    "@solana/kit": "^6.10.0",
+    "codama": "^1.8.0",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.0"
+  }
+}

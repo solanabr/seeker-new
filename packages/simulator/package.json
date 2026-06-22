@@ -1,0 +1,37 @@
+{
+  "name": "seeker-simulator",
+  "description": "Browser device-frame simulator that renders a Solana Mobile (Expo / React Native) app and runs an in-browser wallet flow, behind a swappable rendering backend. Internal package of the seeker.new monorepo, consumed by source.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./iframe": "./src/iframe.ts",
+    "./preset": "./preset/index.ts",
+    "./preset/web-entry": "./preset/web-entry.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "dev": "vite",
+    "preview:simulator": "vite --config examples/preview/vite.config.ts"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@solana/kit": "^6.10.0",
+    "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.5.2",
+    "vite": "^6.0.0"
+  }
+}

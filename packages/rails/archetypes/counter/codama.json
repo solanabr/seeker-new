@@ -1,0 +1,19 @@
+{
+  "idl": "target/idl/seeker_program.json",
+  "before": [],
+  "scripts": {
+    "js": {
+      "from": "@codama/renderers-js",
+      "args": [
+        "clients/ts",
+        {
+          "kitImportStrategy": "rootOnly",
+          "syncPackageJson": true,
+          "dependencyVersions": {
+            "@solana/kit": "^6.1.0"
+          }
+        }
+      ]
+    }
+  }
+}

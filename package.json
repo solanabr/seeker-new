@@ -1,0 +1,10 @@
+{
+  "name": "seeker-new",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "builder:dev": "pnpm --dir apps/builder dev",
+    "builder:build": "pnpm --dir apps/builder build",
+    "builder:typecheck": "pnpm --dir apps/builder typecheck"
+  }
+}
