@@ -34,6 +34,10 @@ const FEATURE_STEPS = [
   },
 ] as const;
 
+const GITHUB_REPO_URL = 'https://github.com/solanabr/seeker-new';
+const GITHUB_REPO_LABEL = 'solanabr/seeker-new';
+const GITHUB_STAR_COUNT = 0;
+
 interface BaseChatProps {
   textareaRef?: React.RefObject<HTMLTextAreaElement> | undefined;
   messageRef?: RefCallback<HTMLDivElement> | undefined;
@@ -64,6 +68,13 @@ const EXAMPLE_PROMPTS = [
 ];
 
 const TEXTAREA_MIN_HEIGHT = 76;
+
+function formatCompactCount(value: number) {
+  return new Intl.NumberFormat('en-US', {
+    notation: 'compact',
+    maximumFractionDigits: value >= 1000 ? 1 : 0,
+  }).format(value);
+}
 
 export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
   (
@@ -116,16 +127,20 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <div className={styles.IntroNavActions}>
                     <ClientOnly>{() => <ProviderControlButton className={styles.IntroProviderButton} />}</ClientOnly>
                     <a
-                      href="https://github.com/solanabr/seeker-new"
+                      href={GITHUB_REPO_URL}
                       target="_blank"
                       rel="noreferrer"
                       className={styles.IntroGithubButton}
+                      aria-label={`Open ${GITHUB_REPO_LABEL} on GitHub`}
                     >
                       <GithubMark className={styles.IntroGithubIcon} />
-                      <span>Open Source</span>
+                      <span className={styles.IntroGithubText}>
+                        <span className={styles.IntroGithubLabel}>Open Source</span>
+                        <span className={styles.IntroGithubRepo}>{GITHUB_REPO_LABEL}</span>
+                      </span>
                       <span className={styles.IntroGithubStars}>
                         <div className="i-ph:star-fill text-[0.875rem]" />
-                        4.2k
+                        {formatCompactCount(GITHUB_STAR_COUNT)}
                       </span>
                     </a>
                   </div>
@@ -332,7 +347,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           lock-in, no platform fees, no gatekeepers.
                         </p>
                         <a
-                          href="https://github.com/solanabr/seeker-new"
+                          href={GITHUB_REPO_URL}
                           target="_blank"
                           rel="noreferrer"
                           className={styles.BentoOutlineButton}

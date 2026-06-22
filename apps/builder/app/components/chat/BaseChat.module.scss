@@ -91,18 +91,24 @@
 .IntroGithubButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   background: rgba(12, 16, 22, 0.42);
-  padding: 0.6rem 0.95rem;
+  padding: 0.55rem 0.9rem;
   font-size: 0.75rem;
   font-weight: 500;
   color: rgba(232, 240, 247, 0.96);
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(159, 212, 239, 0.22);
+    transform: translateY(-1px);
   }
 }
 
@@ -110,6 +116,25 @@
   height: 0.95rem;
   width: 0.95rem;
   color: var(--intro-accent);
+  flex: 0 0 auto;
+}
+
+.IntroGithubText {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.05rem;
+}
+
+.IntroGithubLabel {
+  line-height: 1;
+}
+
+.IntroGithubRepo {
+  line-height: 1;
+  color: rgba(193, 205, 217, 0.62);
+  font-size: 0.625rem;
 }
 
 .IntroGithubStars {
@@ -117,8 +142,9 @@
   align-items: center;
   gap: 0.35rem;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 0.5rem;
+  padding-left: 0.65rem;
   color: rgba(193, 205, 217, 0.82);
+  flex: 0 0 auto;
 }
 
 .IntroHeroSection {
@@ -196,8 +222,7 @@
   position: absolute;
   inset: 0;
   opacity: 0.18;
-  background-image:
-    linear-gradient(to right, var(--intro-grid) 1px, transparent 1px),
+  background-image: linear-gradient(to right, var(--intro-grid) 1px, transparent 1px),
     linear-gradient(to bottom, var(--intro-grid) 1px, transparent 1px);
   background-size: 56px 56px;
 }
